@@ -1,6 +1,7 @@
 ; Save buffers with Ctrl+S
 (global-set-key (kbd "C-s") 'evil-write)
 
+
 (setq evil-want-C-u-scroll t)
 (defun minibuffer-keyboard-quit ()
   "Abort recursive edit.
@@ -13,14 +14,40 @@
     (abort-recursive-edit)))
 
 (require 'evil)
+(require 'evil-numbers)
+;;(require 'evil-paredit)
+(require 'evil-surround)
+(require 'evil-matchit)
+(require 'evil-smartparens)
+(require 'evil-nerd-commenter)
+(setq evil-regexp-search t)
+(global-evil-matchit-mode 1)
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+(smartparens-mode 1)
+(global-evil-surround-mode 1)
 (global-evil-leader-mode)
+
 (evil-leader/set-leader ",")
 (evil-mode t)
 
 (evil-leader/set-key "ev" '(lambda() (interactive ) (find-file "~/.emacs.d/init.el")))
 (evil-leader/set-key "nu" 'linum-mode)
 (evil-leader/set-key "rn" 'linum-relative-toggle)
-
+(evil-leader/set-key
+  "ci" 'evilnc-comment-or-uncomment-lines
+  "cl" 'evilnc-quick-comment-or-uncomment-to-the-line
+  "ll" 'evilnc-quick-comment-or-uncomment-to-the-line
+  "cc" 'evilnc-copy-and-comment-lines
+  "cp" 'evilnc-comment-or-uncomment-paragraphs
+  "cr" 'comment-or-uncomment-region
+  "cv" 'evilnc-toggle-invert-comment-line-by-line
+  "\\" 'evilnc-comment-operator
+  )
+(evil-leader/set-key
+  "|" 'split-window-right
+  "_" 'split-window-below)
+(define-key evil-normal-state-map (kbd "C-a +") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-a -") 'evil-numbers/dec-at-pt)
 (define-key evil-normal-state-map [escape] 'keyboard-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
@@ -34,7 +61,8 @@
   (setq evil-emacs-state-cursor '("#9C6363" box))
   (setq evil-normal-state-cursor '("#7F9F7F" box))
   (setq evil-visual-state-cursor '("#DFAF8F" box))
-  (setq evil-insert-state-cursor '("#9C6363" bar))
+  (setq evil-insert-state-cursor '("#7F9F7F" (hbar . 4)))
   (setq evil-replace-state-cursor '("red" box))
   (setq evil-operator-state-cursor '("red" hollow))
 )
+

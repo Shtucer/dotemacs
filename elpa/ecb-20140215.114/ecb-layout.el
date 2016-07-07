@@ -582,7 +582,7 @@ advice documentation of `other-window-for-scrolling'."
 
 (defcustom ecb-ignore-special-display 'compile-window
   "*Ignore special-display-handling.
-This means, that all values of `special-display-function',
+This means, that all values of `display-buffer-alist',
 `special-display-buffer-names' and `special-display-regexps' are ignored
 - only when persistent compile window is used - i.e. if
   `ecb-compile-window-height' is not nil - this is the default value.
@@ -2087,11 +2087,11 @@ Returns the window displaying BUFFER."
                  (throw 'done (display-buffer-1 window)))
 
              ;; Certain buffer names get special handling.
-             (if special-display-function
+             (if display-buffer-alist
                  (progn
                    (if (member (buffer-name buffer)
                                special-display-buffer-names)
-                       (throw 'done (funcall special-display-function buffer)))
+                       (throw 'done (funcall display-buffer-alist buffer)))
 
                    (let ((tem (assoc (buffer-name buffer)
                                      special-display-buffer-names)))
@@ -2105,14 +2105,14 @@ Returns the window displaying BUFFER."
                          (if (and (stringp car)
                                   (save-match-data (string-match car (buffer-name buffer))))
                              (throw 'done
-                                    (funcall special-display-function buffer)))
+                                    (funcall display-buffer-alist buffer)))
                          (if (and (consp car)
                                   (stringp (car car))
                                   (save-match-data
                                     (string-match (car car)
                                                   (buffer-name buffer))))
                              (throw 'done (funcall
-                                           special-display-function buffer
+                                           display-buffer-alist buffer
                                            (cdr car)))))
                        (setq tem (cdr tem))))))
 
@@ -2896,7 +2896,7 @@ BUFFER-OR-NAME is contained or matches `special-display-buffer-names' or
              nil
            (catch 'done
              (let ((buf-name (ecb-buffer-name buffer-or-name)))
-               (when (and buf-name special-display-function)
+               (when (and buf-name display-buffer-alist)
                  (if (member buf-name
                              special-display-buffer-names)
                      (throw 'done t))
@@ -3060,9 +3060,9 @@ If called for other frames it works like the original version."
            (not (and (boundp 'display-buffer-function)
                      (fboundp display-buffer-function)
                      (not (ecb-ignore-display-buffer-function)))))
-      (let ((special-display-function (if (ecb-ignore-special-display)
+      (let ((display-buffer-alist (if (ecb-ignore-special-display)
                                           nil
-                                        special-display-function)))
+                                        display-buffer-alist)))
         (cond ((ecb-compilation-buffer-p (ad-get-arg 0))
                (ecb-layout-debug-error "display-buffer for a comp-buffer: %s"
                                        (ad-get-arg 0))

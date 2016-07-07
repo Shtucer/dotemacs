@@ -2,7 +2,9 @@
 ;;(setq ecb-source-path '("~/Projects/InsideServer/"
 ;;                        "~/"))
 (setq ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
-(add-hook 'ecb-activate-hook (lambda()(set-face-font 'ecb-default-general-face "Ubuntu Mono for Powerline-12")))
+(add-hook 'ecb-activate-hook (lambda()(set-face-font 'ecb-default-general-face "Ubuntu Mono-10")))
+;;(add-hook 'ecb-activate-hook (lambda()(set-face-font 'ecb-default-general-face "Inconsolata for Powerline-10")))
+(add-hook 'ecb-activate-hook (lambda()(linum-mode 0)))
  (setq ecb-layout-window-sizes
    (quote
     (("shtucer-fancy-layout"
@@ -11,7 +13,10 @@
       (ecb-methods-buffer-name 0.13966480446927373 . 0.98)))))
 
 (ecb-activate)
-(add-to-list 'ecb-source-path '("~/Projects/InsideServer" "InsideServer"))
+(if (eq system-type "windows-nt")
+    (add-to-list 'ecb-source-path '("d:/Projects/InsideServer" "InsideServer")) 
+;;    (add-to-list 'ecb-source-path '("~/Projects/InsideServer" "InsideServer"))
+)
 
 (ecb-layout-switch "shtucer-fancy-layout")
-(global-set-key (kbd "<f8>") 'ecb-toogle-ecb-windows)
+(global-set-key (kbd "<f8>") 'ecb-toggle-ecb-windows)

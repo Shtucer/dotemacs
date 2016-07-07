@@ -1,5 +1,12 @@
 (require 'go-autocomplete)
 (require 'auto-complete-config)
+(require 'evil-leader)
 (define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
 
 (auto-complete-mode)
+(add-to-list 'auto-mode-alist '("\\.go$" . go-mode))
+(defun my-go-hook()
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (evil-leader/set-key-for-mode 'go-mode "gd" 'godef-jump)
+  )
+(add-hook 'go-mode-hook 'my-go-hook)

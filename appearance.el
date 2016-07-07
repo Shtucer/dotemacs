@@ -2,9 +2,10 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 ;; Don't display the ugly startup message (particularly ugly in the GUI)
 (setq inhibit-startup-message t)
-(set-default 'truncate-lines 1)
-(set-face-attribute 'default nil :font "Consolas for Powerline FixedD-14")
-(load-theme 'zenburn t)
+(set-default 'truncate-lines t)
+(set-face-attribute 'default nil :font "InputMono-11")
+;;(setq zenburn-no-bold 1)
+(load-theme 'lordesert t)
 (tool-bar-mode -1)
 (when (display-graphic-p) (set-scroll-bar-mode nil))
 (require 'linum-relative)
@@ -77,4 +78,13 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
-(auto-complete-mode 1)
+(auto-complete-mode t)
+
+(load-user-file "highlight-indentation.el")
+(highlight-indentation-mode t)
+
+(set-face-background 'highlight-indentation-face "grey30")
+
+(require 'rainbow-delimiters)
+(rainbow-delimiters-mode t)
+(rainbow-mode t)
