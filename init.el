@@ -14,6 +14,14 @@
     (interactive)
     (string-equal system-type "windows-nt"))
 
+(defun dump-installed-packages (file)
+    (interactive)
+    (write-region (format "%s" package-activated-list) nil
+                (expand-file-name file user-emacs-directory)))
+
+
+
+
 (setq exec-path (append exec-path '("/usr/local/bin")))
 ;;(setq exec-path (append exec-path '("/HDD/Users/shtucer/opt/go/bin")))
 (setq exec-path (append exec-path '("/usr/local/sbin")))
@@ -143,6 +151,6 @@
 (load-user-file "scssmode.el")
 (load-user-file "haskell.el")
 (put 'set-goal-column 'disabled nil)
-(paredit-mode t)
+
 (setq powerline-arrow-shape 'arrow)
 (put 'scroll-left 'disabled nil)
