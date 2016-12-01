@@ -1,9 +1,9 @@
 ;;; company-jedi-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "company-jedi" "company-jedi.el" (22396 15273
+;;;### (autoloads nil "company-jedi" "company-jedi.el" (22569 543
 ;;;;;;  0 0))
 ;;; Generated autoloads from company-jedi.el
 

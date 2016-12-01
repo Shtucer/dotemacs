@@ -1,10 +1,10 @@
 ;;; python-environment-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
 ;;;### (autoloads nil nil ("python-environment-pkg.el" "python-environment.el"
-;;;;;;  "test-python-environment.el") (22396 15231 92000 0))
+;;;;;;  "test-python-environment.el") (22569 522 0 0))
 
 ;;;***
 

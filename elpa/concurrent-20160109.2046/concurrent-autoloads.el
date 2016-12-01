@@ -1,9 +1,9 @@
 ;;; concurrent-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil nil ("concurrent.el") (22396 15233 588000 0))
+;;;### (autoloads nil nil ("concurrent.el") (22569 535 0 0))
 
 ;;;***
 

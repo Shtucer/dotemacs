@@ -1,9 +1,9 @@
 ;;; ctable-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil nil ("ctable.el") (22396 15232 494000 0))
+;;;### (autoloads nil nil ("ctable.el") (22569 532 0 0))
 
 ;;;***
 

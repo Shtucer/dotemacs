@@ -2,7 +2,10 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- '((".ya.ru"
+ '(("localhost"
+  [url-cookie "django_language" "ru" "22-Oct-2017 18:23:33.00 GMT" "/" "localhost" nil]
+  [url-cookie "Max-Age" "31536001" "22-Oct-2017 18:23:33.00 GMT" "/" "localhost" nil])
+ (".ya.ru"
   [url-cookie "yandexuid" "37488701425822003" "05-Mar-2025 13:40:02.00 GMT" "/" ".ya.ru" nil]))
 )
 (setq url-cookie-secure-storage

@@ -24,5 +24,13 @@
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.el\\'" . emacs-lisp-mode))
 
+
+(add-hook 'lisp-mode (lambda ()
+                       (paredit-mode t)))
+
+(add-hook 'emacs-lisp-mode (lambda ()
+                       (paredit-mode t)))
+
+
 (setq-default lisp-body-indent 4)
 (setq lisp-indent-function 'common-lisp-indent-function)
